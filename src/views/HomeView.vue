@@ -23,6 +23,7 @@ const listSheet = ref([]);
 const sheet_name = ref("");
 const data_excel = ref([]);
 let input = null;
+const DEVIATION = 5;
 
 onMounted(() => {
   // File.
@@ -45,7 +46,7 @@ const handleData = () => {
         if (count % 2 == 0) {
           if (Math.abs(rows[index][3] - rows[index - 1][3]) > 5) {
             let sum = rows[index][3] + rows[index - 1][3];
-            let ran = (Math.random() * 2.5 + 1) / 2;
+            let ran = (Math.random() * DEVIATION + 1) / 2;
 
             content += sum / 2 + ran + "\n" + (sum / 2 - ran) + "\n";
           } else {
